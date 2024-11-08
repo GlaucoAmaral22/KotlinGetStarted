@@ -63,10 +63,7 @@ fun main() {
     println(stringToUpperCaseWithfunctionType("hellooooooo com type"))
 
 
-    val lambdasoma: (Int, Int) -> Int = {valor1: Int, valor2: Int -> valor1 + valor2}
-    println(lambdasoma(1,2))
-
-
-
+    val lambdaSomaComParametro: (Int, Int) -> Int = {valor1: Int, valor2: Int -> valor1 + valor2}
+    println(lambdaSomaComParametro(1,2))
 
 }
