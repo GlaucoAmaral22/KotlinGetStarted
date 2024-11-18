@@ -55,7 +55,7 @@ fun main() {
 
     val numbers = listOf(1,2,3,4,5,6,7,8,9,10)
     println("Somente os numeros pares: " + numbers.filter {number: Int -> (number % 2) == 0 })
-    println("Somente os numeros dobrados: " + numbers.map ({ number: Int -> number * 3 }))
+    println("Somente os numeros dobrados: " + numbers.map { number: Int -> number * 3 })
 
 
     //lambda function com TYPEEE
