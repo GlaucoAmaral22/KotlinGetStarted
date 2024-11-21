@@ -44,6 +44,8 @@ fun main() {
     //
     //O corpo da função após ->.
 
+    //{ parâmetro(s) -> expressão }
+
     //lambda function sem type
     val upperCaseString = { text: String, number: Int -> text.toUpperCase() + " " + number }
     println(upperCaseString("hello world", 10))
@@ -65,5 +67,17 @@ fun main() {
 
     val lambdaSomaComParametro: (Int, Int) -> Int = {valor1: Int, valor2: Int -> valor1 + valor2}
     println(lambdaSomaComParametro(1,2))
+
+    //Lambda com um unico comando
+    val square = { x: Int -> x * x }
+    println(square(5))
+
+    //lambda com varios comandos
+    val lambdaComVariosParametro = {x: Int, y: Int ->
+        println("Valor de x na lambdaComVariosParametro: $x")
+        println("Valor de y na lambdaComVariosParametro: $y")
+        x + y
+    }
+    println(lambdaComVariosParametro(10,25))
 
 }
