@@ -1,6 +1,7 @@
 package functions.lambdaWithReceiver
 //commit para versao 1.0.0
 //commit para versao 1.2.0 que estará na release 1.3.0
+//commit para versao 1.4.0
 
 fun main() {
     val sum = { a: Int, b: Int -> a + b } //lambda. same as: val sum: (Int, Int) -> (Int) = { a: Int, b: Int -> a + b }
