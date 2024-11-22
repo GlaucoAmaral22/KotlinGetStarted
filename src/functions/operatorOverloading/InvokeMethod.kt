@@ -1,4 +1,4 @@
-package classes
+package functions.operatorOverloading
 
 interface BaseUseCase {
     //o Invoke serve mais para quando tivermos uma unica acao na classe, chamarmos o objeto como methodo ao inves
@@ -13,7 +13,7 @@ class FirstUseCase: BaseUseCase {
 
 }
 
-class SecondUseCase : BaseUseCase{
+class SecondUseCase : BaseUseCase {
     override operator fun invoke() {
         println("My Second UseCase")
     }

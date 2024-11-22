@@ -47,7 +47,7 @@ fun main() {
     //{ parâmetro(s) -> expressão }
 
     //lambda function sem type
-    val upperCaseString = { text: String, number: Int -> text.toUpperCase() + " " + number }
+    val upperCaseString = { text: String, number: Int -> text.uppercase() + " " + number }
     println(upperCaseString("hello world", 10))
 
 
