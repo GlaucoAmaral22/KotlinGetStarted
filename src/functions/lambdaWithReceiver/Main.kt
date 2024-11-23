@@ -23,7 +23,7 @@ fun main() {
 
     //Com receiver, não precisamos 'mencionar' o parametro e objeto é injetado implicitamente como receptor(this)
     val resultWithLambdaReceiver = buildStringWithLambdaReceiver {
-        append("Kotlin ")
+        append("Kotlin ") //mesma coisa que this.append()
         append("é ")
         append("Foda ")
     }

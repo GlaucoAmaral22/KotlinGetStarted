@@ -15,22 +15,23 @@ fun main() {
 
 
     //temos alguns jeitos de chamar a funcao
-    //se o último parâmetro de uma função é uma função
-    //então uma expressão lambda passou como o argumento correspondente pode ser colocado fora dos parênteses
-    alterAndPrintString("glauco amaral") { str -> println(str.uppercase()) }
-    alterAndPrintString(phrase = "glauco amaral", block = { str -> println(str.uppercase()) })
-    "glauco amaral".upatudo(block = { phrase -> println(phrase.uppercase()) })
+    //se o último parâmetro de uma função é uma lambda
+    //então uma expressão lambda passada como o argumento correspondente pode ser colocado fora dos parênteses
+    alterAndPrintString("glauco amaral") { str -> println(str.uppercase()) } //jeito mais puro
+    alterAndPrintString(phrase = "glauco amaral", block = { str -> println(str.uppercase()) }) //com parametro nomeado
+    "glauco amaral".upatudo(block = { phrase -> println(phrase.uppercase()) }) //com extension function
 
     //Passing trailing lambdas
     //Se o lambda for o único argumento DA FUNCAO, os parênteses poderão ser totalmente omitidos
     "glauco amaral".upatudo { phrase ->
         println(phrase.uppercase())
     }
-    //além disso, como é um unico parametro da funcao, podemos omitir o parametro do lambda e referencia como it
+    //além disso, como é um unico parametro da funcao, podemos omitir o parametro do lambda e referenciar como it
     "glauco amaral".upatudo {
         println(it.uppercase())
     }
 
     //Se a lambda expression tiver apenas um parametro, podemos omiti-lo e assumir o parametro como it dentro da lambda
+    //obs: igual ao exemplo da linha 30
     alterAndPrintString("glauco amaral") { println(it.uppercase()) }
 }
