@@ -1,36 +1,60 @@
 package functions.lambdaWithReceiver
-//commit para versao 1.0.0
-//commit para versao 1.2.0 que estará na release 1.3.0
-//commit para versao 1.4.0
+
+fun buildString(configure: (StringBuilder) -> Unit): String {
+    val stringBuilder = StringBuilder()
+    configure(stringBuilder)
+    return stringBuilder.toString()
+}
+
+fun buildStringWithLambdaReceiver(configure: (StringBuilder).() -> Unit): String {
+    val stringBuilder = StringBuilder()
+    configure(stringBuilder)
+    return stringBuilder.toString()
+}
 
 fun main() {
-    val sum = { a: Int, b: Int -> a + b } //lambda. same as: val sum: (Int, Int) -> (Int) = { a: Int, b: Int -> a + b }
-    val soma = fun(a: Int, b: Int): Int = a + b //anonymous function
-    println(sum(1, 3))
-    println(soma(1, 3))
-
-    val printa: () -> Unit = { println("Hello World") }
-    printa()
-
-    //A.(B) -> C represents functions that can be called on a receiver object A with a parameter B and return a value C
-    val sumTwo: Int.(Int) -> Int = { a -> a + this } //A refere-se ao ``
-    val somaTwo = fun Int.(other: Int): Int = this + other
-    println(sumTwo(10, 20))
-    println(somaTwo(10, 20))
-
-    //Imagine que você tem um objeto chamado caderno. Para adicionar algo nele, normalmente você faz assim:
-    val caderno = StringBuilder()
-    caderno.append("Minha anotação 1")
-    caderno.append("Minha anotação 2")
-    println(caderno.toString())
-
-    //Com lambda com receiver, o caderno vira o receiver, e você escreve o código como se estivesse dentro dele, sem precisar repetir caderno. toda vez.
-    val texto = buildString {
-        append("x")
-        append("y")
+    //Sem receiver precisamos 'mencionar' o parametro, seja com o it ou sem o it e demais parametros
+    val result = buildString {
+        it.append("Kotlin ")
+        it.append("é ")
+        it.append("Foda")
     }
-    println(texto)
+    println(result)
 
+    //Com receiver, não precisamos 'mencionar' o parametro e objeto é injetado implicitamente como receptor(this)
+    val resultWithLambdaReceiver = buildStringWithLambdaReceiver {
+        append("Kotlin ")
+        append("é ")
+        append("Foda ")
+    }
+    println(resultWithLambdaReceiver)
+
+
+    //Function types with receiver, such as A.(B) -> C, can be instantiated with a special form of function literals
+    // – function literals with receiver.
+    //Inside the body of the function literal, the receiver object (A.) passed to a call becomes an implicit this,
+    //so that you can access the members of that receiver object without any additional qualifiers, or access the receiver object using a this expression.
+    val crazy: Int.(String) -> Unit = { other ->
+        print("Valor de this: $this, ")
+        println("Valor de other: $other")
+    }
+    crazy(10, "Glauco")
+
+    //Voce pode até usar com mais de 2 parametros, mas o `this` será sempre do receiver(A)
+    val sumTriple: Int.(Int, Int) -> Int = { secondInt, thirdInt -> this + secondInt + thirdInt }
+    println("Valor da soma tripla: ${sumTriple(1, 2, 3)}")
+
+    fun operationInTriple(value1: Int, value2: Int, value3: Int, operation: Int.(Int, Int) -> Unit) {
+        operation(value1, value2, value3)
+    }
+
+    operationInTriple(1, 2, 3) { value2, value3 ->
+        println(this + value2 + value3)
+    }
+
+    operationInTriple(10, 10, 10) { value2, value3 ->
+        println(this * value2 * value3)
+    }
 
 
 }
