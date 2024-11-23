@@ -4,12 +4,12 @@ package functions.highOrderFunction
 fun main() {
 
     //high order function é uma funcao que possui outra funcao como parametro ou retorna uma funcao
-    fun alterAndPrintString(phrase: String, block: (String) -> Unit): Unit {
+    fun alterAndPrintString(phrase: String, block: (String) -> Unit) {
         block(phrase)
     }
 
     //extension function
-    fun String.upatudo(block: (String) -> Unit): Unit {
+    fun String.upatudo(block: (String) -> Unit) {
         block(this) //block é essa funcao lambda { phrase -> println(phrase.uppercase()) }
     }
 
