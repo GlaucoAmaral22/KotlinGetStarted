@@ -26,7 +26,7 @@ fun main() {
     "glauco amaral".upatudo { phrase ->
         println(phrase.uppercase())
     }
-    //além disso, como é um unico parametro da funcao, podemos omitir o parametro do lambda e referenciar como it
+    //além disso, como é um unico parametro da lambda, podemos omitir o parametro do lambda e referenciar como it
     "glauco amaral".upatudo {
         println(it.uppercase())
     }
