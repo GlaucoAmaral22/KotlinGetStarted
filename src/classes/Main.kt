@@ -40,7 +40,15 @@ open class Base(val b: String) {
 class Derived(b: String) : Base(b)
 
 
+open class Animal(open val age: Int)
+
+data class Human(val name: String, override val age: Int) : Animal(age)
+
 fun main() {
+
+    val teste1: Animal = Human("Glauco", 26)
+    println("${teste1.age}")
+
     val person1: Customer = Customer("Glauco Amaral", 26)
     person1.printInfo()
 

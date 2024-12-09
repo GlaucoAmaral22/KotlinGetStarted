@@ -1,6 +1,5 @@
 package functions.highOrderFunction
 
-
 fun main() {
 
     //high order function é uma funcao que possui outra funcao como parametro ou retorna uma funcao
