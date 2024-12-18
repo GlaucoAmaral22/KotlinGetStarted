@@ -13,7 +13,7 @@ import kotlinx.coroutines.runBlocking
 //Ela trabalha em cima do conceito de CONCORRENCIA e não PARALELISMO
 
 // runblocking no Kotlin é frequentemente usado como uma ponte entre o código bloqueante e não bloqueante.
-// Ele permite que você execute código assíncrono (baseado em corrotinas) dentro de um ambiente bloqueante,
+// Ele permite que você execute código assíncrono (baseado em coroutinas) dentro de um ambiente bloqueante,
 // como a função main de um aplicativo ou em um teste unitário, onde a API do Kotlin exige que o código seja síncrono.
 
 //Runs new coroutine and blocks current thread interruptibly until its completion -> nao usar em produção pq bloqueia a thread atual que chamou
@@ -21,10 +21,12 @@ import kotlinx.coroutines.runBlocking
 
 fun main() {
     runBlocking {  // é um coroutine builder tb que serve como PONTE de um mundo non-coroutine da main()(pq a main é uma THREAD e ela pode ser bloqueante) com o codigo dentro do launch
-        doWorld()
-        println("Done")
-//        (1..3).forEach { launch { startNewCoroutine(it) } }
+//        doWorld()
+//        functionTestCoroutine()
+//        println("Done")
+        (1..10).forEach { launch { startNewCoroutine(it) } }
     }
+    println("Finish main")
 }
 
 // uma funcao `suspend` quer dizer que ela é suspendível
@@ -71,6 +73,8 @@ suspend fun functionTestCoroutine() {
     // vai ser exibido por ultimo porque
     // o coroutineScope suspende a função chamadora sem bloquear a Thread
     // e aguarda finalização das coroutinas.
+    //'CoroutineScope' e 'launch' não bloqueiam o fluxo principal. A execução continua após o início da coroutine.
+    //Se quiser que a execução espere, use runBlocking, join ou await.
     println("Aguardando inicio execução: ")
 }
 
@@ -78,7 +82,6 @@ suspend fun startNewCoroutine(coroutineNumber: Int) {
     println("executando corotina: $coroutineNumber")
     delay((2000..4000).random().toLong())
     println("finalizando corotina: $coroutineNumber")
-
 }
 
 

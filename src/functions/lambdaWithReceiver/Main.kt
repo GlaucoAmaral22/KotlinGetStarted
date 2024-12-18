@@ -2,7 +2,7 @@ package functions.lambdaWithReceiver
 
 fun buildString(configure: (StringBuilder) -> Unit): String {
     val stringBuilder = StringBuilder()
-    configure(stringBuilder)
+    configure(stringBuilder) //invocando o configure que é um bloco de codigo (lambda, funcao)
     return stringBuilder.toString()
 }
 
