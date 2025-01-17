@@ -41,4 +41,22 @@ fun main() {
     val glauco: String
     glauco = "Glauco Amaral Geraldino"
     println("Meu nome é: $glauco")
+    
+    val a: Byte = 100
+    val b: Short = 32000
+    val c: Int = 100000
+    val d: Long = 10000000000L
+    val e: Float = 3.14f
+    val f: Double = 3.141592653589793
+
+    println("Byte: $a")
+    println("Short: $b")
+    println("Int: $c")
+    println("Long: $d")
+    println("Float: $e")
+    println("Double: $f")
 }
+
+
+
+
