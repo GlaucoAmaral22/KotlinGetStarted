@@ -19,9 +19,9 @@ fun main() {
     //Kotlin makes inference to variables
     //https://kotlinlang.org/docs/basic-types.html
 
-    customer += 2;
-    customer -= 2;
-    customer *= 2;
+    customer += 2
+    customer -= 2
+    customer *= 2
     println("Customer: $customer")
     customer /= 2;
     println("Customer: $customer")
@@ -33,10 +33,10 @@ fun main() {
     val string: String = "Hello World"
     println(string)
 
-    //Voce pode criar uma variavel e inicializar ela depois, mas deve colocar o tipo na declaracao
-    val d: Int
-    d = 10
-    println(d)
+    //Voce pode criar uma variável e inicializar ela depois, mas deve colocar o tipo na declaração
+    val variable: Int
+    variable = 10
+    println(variable)
 
     val glauco: String
     glauco = "Glauco Amaral Geraldino"
