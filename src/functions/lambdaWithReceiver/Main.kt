@@ -55,6 +55,4 @@ fun main() {
     operationInTriple(10, 10, 10) { value2, value3 ->
         println(this * value2 * value3)
     }
-
-
 }
